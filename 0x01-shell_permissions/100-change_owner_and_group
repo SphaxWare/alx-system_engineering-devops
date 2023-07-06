@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -exec chmod vincent:staff {}
+chown vincent:staff /*
