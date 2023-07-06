@@ -1,2 +1,2 @@
 #!/bin/bash
-(ls -la -la cd .. -la /boot
+ls -la -la cd .. -la /boot
