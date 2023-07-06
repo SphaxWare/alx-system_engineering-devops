@@ -1,0 +1,2 @@
+#!/bin/bash
+if [stat -c %U hello = "betty"];chown betty hello
