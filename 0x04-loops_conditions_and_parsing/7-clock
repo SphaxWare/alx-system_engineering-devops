@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This script simulate a clock
+a=0
+b=1
+while [ $a -lt 13 ]; do
+	echo "Hour: $a"
+	b=1
+	while [ $b -lt 60 ]; do
+		echo "$b"
+		((b++))
+	done
+	((a++))
+done
