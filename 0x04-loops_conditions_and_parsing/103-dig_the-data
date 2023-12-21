@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 #a Bash script that displays the visitor IP along with the HTTP status code from the Apache log file
 file="apache-access.log"
-awk '{count[$1 " " $9]++} END {for (key in count) printf "    %d %s\n", count[key], key}' "$file" |
-sort -k1,1nr -k2,2r -k3,3n
+awk '{print $1,$9}' $file | sort | uniq -c | sort -nr
