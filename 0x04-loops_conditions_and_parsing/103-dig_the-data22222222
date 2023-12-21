@@ -1,0 +1,10 @@
+#!/bin/bash
+
+file="apache-access.log"
+
+# Use awk to count occurrences and format the output
+awk '{count[$1 " " $9]++} END {for (key in count) print count[key], key}' "$file" |
+# Use sort to sort in the desired order
+sort -k1,1nr -k3,3 -k2,2 |
+# Use awk to format the output with leading spaces without a for loop
+awk '{print sprintf("%6d%s", $1, substr($0, index($0, $2)))}'
