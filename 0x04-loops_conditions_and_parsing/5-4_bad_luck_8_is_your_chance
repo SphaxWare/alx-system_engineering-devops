@@ -2,11 +2,12 @@
 # This script is displaying "Best School" 10 times and Hi
 a=0
 while [ $a -lt 10 ]; do
-	echo "Best School"
 	if [ $a == 3 ]; then
 		echo "bad luck"
 	elif [ $a == 7 ]; then
 		echo "good luck"
+	else
+		echo "Best School"
 	fi
 	((a++))
 done
