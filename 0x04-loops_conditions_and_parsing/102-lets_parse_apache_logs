@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
 #a Bash script that displays the visitor IP along with the HTTP status code from the Apache log file
 file="apache-access.log"
-exec 3<"$file"
-while read -r line <&3; do
-	ip=$(echo "$line" | awk -F ' ' '{print $1}')
-	httpstat=$(echo "$line" | awk -F ' ' '{print $9}')
-	echo "$ip $httpstat"
-done
+awk '{print $1, $9}' "$file"
