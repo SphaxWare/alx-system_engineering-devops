@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# manage process
+pid_file="/var/run/my_process.pid"
+output_file="/tmp/my_process"
+
+start_process() {
+	./manage_my_process &
+	echo $! > "$pid_file"
+	echo "manage_my_process started"
+}
+
+stop_process() {
+	if [ -e "$pid_file" ]; then
+		pid=$(cat "$pid_file")
+		kill "$pid" && rm -f "$pid_file"
+		echo "manage_my_process stopped"
+	else
+		echo "manage_my_process is not running"
+	fi
+}
+
+restart_process() {
+	stop_process
+	start_process
+	echo "manage_my_process restarted"
+}
+
+case "$1" in
+	start)
+		start_process
+		;;
+	stop)
+		stop_process
+		;;
+	restart)
+		restart_process
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
+		;;
+esac
+
+exit 0
