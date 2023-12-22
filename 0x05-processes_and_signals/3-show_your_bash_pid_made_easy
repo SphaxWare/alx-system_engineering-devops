@@ -1,0 +1,5 @@
+#!/bin/bash
+# Get the PID of the script
+for pid in $(pgrep bash);do
+	echo "$pid bash"
+done
