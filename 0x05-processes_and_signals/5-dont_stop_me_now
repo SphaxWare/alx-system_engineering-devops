@@ -3,5 +3,4 @@
 pid_infinity=$(pgrep -f "4-to_infinity_and_beyond")
 if [ -n "$pid_infinity" ];then
 	kill "$pid_infinity"
-	echo "Terminated"
 fi
