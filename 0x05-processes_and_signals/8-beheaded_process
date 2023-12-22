@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# kills a process
+pid_7=$(pgrep -f '7-highlander')
+if [ -n "$pid_7" ];then
+	kill -s SIGKILL "$pid_7"
+fi
