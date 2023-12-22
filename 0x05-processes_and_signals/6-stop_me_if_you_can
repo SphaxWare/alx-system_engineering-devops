@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# process killer
+pid_infinity=$(pgrep -f "4-to_infinity_and_beyond")
+if [ -n "$pid_infinity" ];then
+	command kill -s SIGTERM "$pid_infinity"
+fi
