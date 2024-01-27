@@ -1,6 +1,5 @@
 # Additions
 - We added another server to fix the SPOF probleme and prevent downtime when maintenance is needed and a load-balancer (HAProxy) to handle the incoming traffic better.<br>
-<br>
 - Our load-balancer is configured with Round Robin algorithme which is a simple algorithme that distributes incoming requests among the available servers.<br>
 - My load-balancer is enabling an Active-Active setup.<br>
   - In an Active-Active setup, both servers are actively handling incoming requests simultaneously providing better performance and scalability.
