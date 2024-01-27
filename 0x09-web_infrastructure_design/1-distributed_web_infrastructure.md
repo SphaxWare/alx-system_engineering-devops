@@ -11,11 +11,8 @@
   - Replica Node: Replicates data from the Primary and handles read operations.<br>
 # Issues
 - Single Point of Failure (SPOF):
-
-The load balancer can be a potential single point of failure. To address this, consider setting up a redundant load balancer.
-Security Issues:
-
-No firewall and no HTTPS are potential security concerns. Implementing firewalls and enabling HTTPS is crucial for securing the infrastructure.
-No Monitoring:
-
-Lack of monitoring tools could lead to difficulties in identifying and resolving issues promptly. Implement monitoring solutions for performance and security insights.
+  - The load balancer can be a potential single point of failure. To address this, consider setting up a redundant load balancer.
+- Security Issues:
+  - No firewall and no HTTPS are potential security concerns. Implementing firewalls and enabling HTTPS is crucial for securing the infrastructure.
+- No Monitoring:
+  - Lack of monitoring tools could lead to difficulties in identifying and resolving issues promptly. Implement monitoring solutions for performance and security insights.
