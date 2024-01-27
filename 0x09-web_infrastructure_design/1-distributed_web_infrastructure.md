@@ -1,3 +1,4 @@
+![distributed web infrastructure](1-distributed_web_infrastructure.PNG)
 # Additions
 - We added another server to fix the SPOF probleme and prevent downtime when maintenance is needed and a load-balancer (HAProxy) to handle the incoming traffic better.<br>
 - Our load-balancer is configured with Round Robin algorithme which is a simple algorithme that distributes incoming requests among the available servers.<br>
