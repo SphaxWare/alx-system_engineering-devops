@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-ssh -i "~/.ssh/school" "unbuntu@54.84.70.148"
+# connect to server using private key
+key="$HOME/.ssh/school"
+ip="unbuntu@54.84.70.148"
+ssh -i "$key" "$ip"
