@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#custom config
+# Update package list
+apt-get update -y
+
+# Install nginx
+apt-get install nginx -y
+
+# Create a custom configuration file for the redirection
+echo "server {
+    listen 80;
+    listen [::]:80;
+    root /ect/nginx/html;
+    index index.html;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+}" > /etc/nginx/sites-available/redirect_me
+
