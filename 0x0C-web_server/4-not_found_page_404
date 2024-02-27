@@ -5,6 +5,7 @@ apt-get update -y
 
 # Install nginx
 apt-get install nginx -y
+service nginx start
 echo "Hello World!" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
 # Create a custom configuration file for the redirection
@@ -18,8 +19,7 @@ echo "server {
     }
     error_page 404 /404.html;
     location = /404.html {
-        root /ect/nginx/html;
-	internal;
+        internal;
     }
 }" > /etc/nginx/sites-available/default
 service nginx restart
