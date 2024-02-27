@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# custom 404
+# Update package list
+apt-get update -y
+
+# Install nginx
+apt-get install nginx -y
+echo "Hello World!" > /var/www/html/index.html
+# Create a custom configuration file for the redirection
+echo "server {
+    listen 80;
+    listen [::]:80;
+    root /ect/nginx/html;
+    index index.html;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+    error_page 404 /404.html;
+    location = /404.html {
+        root /ect/nginx/html;
+	internal;
+	echo 'Ceci n'\''est pas une page';
+    }
+}" > /etc/nginx/sites-available/default
