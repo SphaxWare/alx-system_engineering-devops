@@ -7,7 +7,7 @@ apt-get update -y
 apt-get install nginx -y
 
 # Create a simple HTML file with "Hello World!"
-echo "Hello World!" > /usr/share/nginx/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 
 # Restart Nginx (Note: systemctl is not used as per requirements)
 service nginx start
