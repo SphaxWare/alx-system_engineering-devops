@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#custom config
+# custom config
 # Update package list
 apt-get update -y
 
@@ -16,3 +16,4 @@ echo "server {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
 }" > /etc/nginx/sites-available/default
+service nginx restart
