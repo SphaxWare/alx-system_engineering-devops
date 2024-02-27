@@ -7,8 +7,7 @@ apt-get update -y
 apt-get install nginx -y
 service nginx start
 echo "Hello World!" > /etc/nginx/html/index.html
-echo "Ceci n'est pas une page
- " > /etc/nginx/html/404.html
+echo -e "Ceci n'est pas une page\n" > /etc/nginx/html/404.html
 # Create a custom configuration file for the redirection
 echo "server {
     listen 80;
