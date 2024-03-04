@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Install HAProxy
+
+sudo apt -y update
+sudo apt -y install haproxy
+
+echo'
+backend web-backend
+   balance roundrobin
+   server 476119-web-02 107.22.144.250:80
+   server 476119-web-01 100.26.241.117:80
+'>> /etc/haproxy/haproxy.cfg
+
+service haproxy restart
