@@ -4,7 +4,7 @@
 sudo apt -y update
 sudo apt -y install haproxy
 
-echo'
+echo '
 backend web-backend
    balance roundrobin
    server 476119-web-02 107.22.144.250:80
