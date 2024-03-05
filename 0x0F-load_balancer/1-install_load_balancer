@@ -2,20 +2,19 @@
 # Install HAProxy
 
 sudo apt -y update
-sudo apt -y install haproxy
+sudo apt -y install haproxy=2.0.\*
 
 echo '
 frontend front
         bind *:80
-        default_backend web-backend
-
-backend web-backend
-        balance roundrobin
-        use_backend web-servers
+        default_backend web-servers
 
 backend web-servers
+	mode http
+        balance roundrobin
         server 476119-web-02 107.22.144.250:80 check
         server 476119-web-01 100.26.241.117:80 check
 '>> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
+systemctl enable haproxy
