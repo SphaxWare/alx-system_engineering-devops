@@ -1,22 +1,48 @@
 #!/usr/bin/env bash
-# Configure your domain zone
+# configure
 check_domain() {
-	SUBDOMAINS='www lb-01 web-01 web-02'
-	if [ -z "$2" ]; then
-		echo "$SUBDOMAINS" | awk -v domain="$1"\
-		'BEGIN { RS=" " }
-		{split($0,ARR," ");
-		cmd = "dig " ARR[1]"."domain " | grep -A1 \"ANSWER SECTION:\" | tail -n1";
-		system(cmd)
-		close(cmd)}' | awk\
-		'{
-		split($0, DOMS, ".");
-		print "The subdomain " DOMS[1] " is a " $4 " record and points to " $5}'
-	else
-		dig "$2.$1" | grep -A1 "ANSWER SECTION:" | tail -n1 | awk\
-		'{
-		split($0, DOMS, ".");
-		print "The subdomain " DOMS[1] " is a " $4 " record and points to " $5}'
-	fi
+    # Set the IPs for the subdomains
+    LB_IP="100.26.136.48"
+    WEB_01_IP="100.26.136.48"
+    WEB_02_IP="107.22.144.250"
+
+    # Define the subdomains
+    SUBDOMAINS=('www' 'lb-01' 'web-01' 'web-02')
+
+    # Check if domain argument is provided
+    if [ -z "$1" ]; then
+        echo "Error: Please provide the domain as the first argument."
+        exit 1
+    fi
+
+    # Check if subdomain argument is provided
+    if [ -n "$2" ]; then
+        # If subdomain is specified, only check that subdomain
+        subdomain="$2"
+        dig_output=$(dig "$subdomain.$1" | grep -A1 'ANSWER SECTION:')
+    else
+        # If no subdomain specified, check all subdomains
+        for subdomain in "${SUBDOMAINS[@]}"; do
+            dig_output=$(dig "$subdomain.$1" | grep -A1 'ANSWER SECTION:')
+            print_output "$dig_output"
+        done
+        exit 0
+    fi
+
+    # Print output for the specified subdomain
+    print_output "$dig_output"
 }
+
+print_output() {
+    # Parse and print the relevant information from the dig output
+    awk '
+        /ANSWER SECTION:/ {
+            getline; getline;
+            split($0, DOMS, ".");
+            printf "The subdomain %s is a %s record and points to %s\n", DOMS[1], $4, $5;
+        }' <<< "$1"
+}
+
+# Call the function with the provided arguments
 check_domain "$1" "$2"
+
