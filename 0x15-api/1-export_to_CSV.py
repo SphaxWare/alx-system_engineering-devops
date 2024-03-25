@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """using this REST API, for a given employee ID"""
+import csv
 import requests
 import sys
-import csv
 
 if __name__ == "__main__":
     """Main Module"""
@@ -10,6 +10,7 @@ if __name__ == "__main__":
     user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
                         .format(id))
     name = user.json().get('name')
+    username = user.json().get('username')
     todos = requests.get("https://jsonplaceholder.typicode.com/todos")
     tasks = 0
     tasks_done = 0
@@ -31,5 +32,5 @@ if __name__ == "__main__":
                             quoting=csv.QUOTE_ALL, lineterminator='\n')
         for task in todos.json():
             if task.get('userId') == id:
-                writer.writerow([id, name, str(task.get('completed')),
+                writer.writerow([id, username, str(task.get('completed')),
                                 task.get('title')])
