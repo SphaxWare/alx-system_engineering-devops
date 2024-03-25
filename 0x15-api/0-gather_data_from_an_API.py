@@ -22,4 +22,4 @@ if __name__ == "__main__":
     for task in todos.json():
         if task.get('userId') == id and task.get('completed'):
             title = task.get('title')
-            print(f"\t{title}")
+            print(f"\t {title}")
