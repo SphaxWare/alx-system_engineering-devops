@@ -1,8 +1,8 @@
-Issue Summary:
+Issue Summary: <br />
 
-Duration: March 24, 2017, 07:32 AM - March 24, 2017, 08:15 AM (UTC)
-Impact: Internal Server Error (HTTP 500) was encountered, rendering the web service inaccessible to users during the outage.
-Root Cause: Typo mistake in the PHP configuration file causing a misdirected require_once function call.
+Duration: March 24, 2017, 07:32 AM - March 24, 2017, 08:15 AM (UTC) <br />
+Impact: Internal Server Error (HTTP 500) was encountered, rendering the web service inaccessible to users during the outage. <br />
+Root Cause: Typo mistake in the PHP configuration file causing a misdirected require_once function call. <br />
 Timeline:
 
 07:32 AM (UTC): Issue detected through monitoring as HTTP 500 error responses were observed.
